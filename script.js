@@ -31,7 +31,7 @@ function sample(){return [
  {type:'text',x:533,y:717,text:'P = πr²',size:24,color:'#228d57'},
  {type:'rect',x:770,y:535,w:150,h:105,color:'#3b91d5',width:3},
  {type:'text',x:796,y:601,text:'P = a · b',size:22,color:'#235f9a'}
-].map(o=>({...o,id:nextId++}));}
+].map(o=>({...o,width:o.width??3,id:nextId++}));}
 function position(ev){const p=board.createSVGPoint();p.x=ev.clientX;p.y=ev.clientY;const matrix=board.getScreenCTM();const t=matrix?p.matrixTransform(matrix.inverse()):{x:0,y:0};return {x:Math.max(0,Math.min(W,t.x)),y:Math.max(0,Math.min(H,t.y))};}
 function element(tag,attributes){const node=document.createElementNS(NS,tag);for(const [key,val] of Object.entries(attributes))node.setAttribute(key,String(val));return node;}
 function shapeElement(s){
